@@ -15,6 +15,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'simple_form', '>= 5.3.1'
 gem 'pg', '>= 1.5.7'
 gem 'libxml-ruby'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
