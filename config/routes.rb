@@ -31,9 +31,22 @@ Rails.application.routes.draw do
   get "mailbox/alert_email"
   get "mailbox/billing_email"
 
-  get "metrics/index"
+  namespace 'mocky_mouse' do
+    resources :mocks, except: [:show] do
+      member do
+        put :activate
+        put :deactivate
+      end
+
+      collection do
+        put :update_order
+      end
+    end
+  end
+
 
   get "widgets/index"
+  get "metrics/index"
 
   get "forms/basic_forms"
   get "forms/advanced"
