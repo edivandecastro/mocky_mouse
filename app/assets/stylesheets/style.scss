@@ -53,9 +53,55 @@
     display: none;
   }
 
-  body { overflow: visible !important; }
+  body {
+    overflow: visible !important;
+  }
 
   #page-wrapper {
     margin: 0;
   }
+}
+
+.field-description {
+  height: 100px !important;
+}
+
+.hint {
+  font-size: 12px;
+  float: right;
+  color: #777;
+}
+
+.checkbox-div {
+  display: flex;
+  align-items: center;
+}
+
+.field_with_errors label {
+  color: $red;
+}
+
+.field_with_errors select,
+.field_with_errors textarea,
+.field_with_errors input {
+  border-color: $red;
+  color: $red;
+}
+
+.field_with_errors .error {
+  color: $red;
+}
+
+.field_with_errors .form-control:focus {
+  border-color: $red;
+  color: $red;
+}
+
+.field_with_errors .form-control {
+  color: $text-color;
+}
+
+.tall {
+  height: 400px !important;
+  width: 100%;
 }
