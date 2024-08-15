@@ -1,0 +1,79 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Mocks</h2>
+    <h5>In this page you can view your current mocks.</h5>
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="ibox">
+
+    <div class="ibox-content">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Method</th>
+            <th>Route</th>
+            <th>Active</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @mocks.each do |mock| %>
+            <tr data-mock-id="<%= mock.id %>">
+              <td>
+                <%= mock.name %>
+              </td>
+
+              <td>
+                <%= mock.request_method %>
+              </td>
+
+              <td>
+                <%= mock.route_path %>
+              </td>
+
+              <td class="text-center">
+                <span class="<%= mock.active? ? 'active' : 'inactive' %>">
+                  <i class="fa fa-<%= mock.active? ? 'check-square-o' : 'square-o' %>"></i>
+                </span>
+              </td>
+
+              <td class="actions">
+                <%= link_to edit_mocky_mouse_mock_path(mock),
+                            title: 'Edit mock',
+                            class: 'button tiny edit' do %>
+                  <i class="fa fa-edit"></i>
+                <% end %>
+
+                <%= link_to mocky_mouse_mock_path(mock), method: :delete,
+                                            title: 'Delete mock',
+                                            data: {
+                                              confirm: t(:mock_deletion_confirmation)
+                                            }, class: 'button tiny delete' do %>
+                  <i class="fa fa-remove"></i>
+                <% end %>
+
+                <%= link_to deactivate_mocky_mouse_mock_path(mock), method: :put,
+                                            title: 'Deactivate mock',
+                                            data: {
+                                              confirm: t(:mock_deactivation_confirmation)
+                                            }, class: 'button tiny deactivate secondary' do %>
+                  <i class="fa fa-pause"></i>
+                <% end if mock.active? %>
+
+                <%= link_to activate_mocky_mouse_mock_path(mock), method: :put,
+                                            title: 'Activate mock',
+                                            data: {
+                                              confirm: t(:mock_activation_confirmation)
+                                            }, class: 'button tiny activate success' do %>
+                  <i class="fa fa-play"></i>
+                <% end unless mock.active? %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

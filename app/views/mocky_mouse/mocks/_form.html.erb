@@ -1,0 +1,114 @@
+<%= simple_form_for @mock do |form| %>
+  <div class="tabs-container">
+    <ul class="nav nav-tabs" role="tablist">
+      <li><a class="nav-link active" data-toggle="tab" href="#general_tab">General</a></li>
+      <li><a class="nav-link" data-toggle="tab" href="#response_body_tab">Response Body</a></li>
+      <li><a class="nav-link" data-toggle="tab" href="#headers_tab">Headers</a></li>
+    </ul>
+      <div class="tab-content">
+        <div role="tabpanel" id="general_tab" class="tab-pane active">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-10">
+                <div class="form-group">
+                  <%= form.input :name, hint: 'Enter a name for this mock',
+                                        input_html: { class: "form-control" } %>
+                </div>
+              </div>
+              <div class="checkbox-div col-lg-2">
+                <%= form.input :active, hint: "Status for this mock",
+                                        input_html: { class: "check-box-active" } %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <%= form.input :description, hint: "Enter a description",
+                                              input_html: { class: "form-control field-description" } %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <%= form.input :request_method, collection: MockyMouse::Router::METHODS,
+                                                  input_html: { class: "form-control" },
+                                                  hint: "Choose the method that matches this mock" %>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <%= form.input :status, hint: "Enter the HTTP status code of this mock's response",
+                                        input_html: { class: "form-control", min: "0" } %>
+              </div>
+            </div>
+            <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                  <%= form.input :route_path, hint: "Enter the route you want to mock. You can use :blah and get the values as parameters",
+                                              input_html: { class: "form-control" } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" id="response_body_tab" class="tab-pane">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <%= form.input :body_type, collection: available_script_types,
+                                            include_blank: true,
+                                            input_html: { class: "form-control" },
+                                            hint: "Choose the type of the response body" %>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <%= form.input :content_type, collection: available_mime_types,
+                                                include_blank: true,
+                                                input_html: { class: "form-control" },
+                                                hint: "Choose the content type to be set to the response" %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <%= form.input :body_content, input_html: { class: "form-control tall" },
+                                              hint: "Fill in the response's body. Depending on your body type selection, the response will be transformed appropriately" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" id="headers_tab" class="tab-pane">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" placeholder="Fill in the header name" class="form-control">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Value</label>
+                  <input type="text" placeholder="Fill in the header value" class="form-control">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <button type="submit" class="btn btn-w-m btn-primary m-t-sm">Save</button>
+<% end %>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(function() {
+      $('.check-box-active').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green',
+      });
+    });
+  </script>
+<% end %>
