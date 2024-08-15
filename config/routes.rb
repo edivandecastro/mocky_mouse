@@ -154,4 +154,5 @@ Rails.application.routes.draw do
 
   get "landing/index"
 
+  MockyMouse::Router.load_mock_routes!
 end
