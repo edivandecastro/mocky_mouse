@@ -5,9 +5,9 @@
     </div>
     <ul class="nav navbar-top-links navbar-right">
       <li>
-        <a href="<%= url_for :controller => 'pages', :action => 'login' %>">
+        <%= link_to pages_login_path, class: "dropdown-item" do %>
           <i class="fa fa-sign-out"></i> Log out
-        </a>
+        <% end %>
       </li>
     </ul>
   </nav>
