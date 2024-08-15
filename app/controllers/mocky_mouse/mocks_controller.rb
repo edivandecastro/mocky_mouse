@@ -27,7 +27,7 @@ module MockyMouse
       @mock.assign_attributes mock_params
 
       if @mock.save
-        redirect_to duckrails_mocks_path, flash: { info: 'The mock was successfully updated.' }
+        redirect_to mocky_mouse_mocks_path, flash: { info: 'The mock was successfully updated.' }
       else
         @skip_reloading = true
         render :edit
@@ -49,7 +49,7 @@ module MockyMouse
       @mock = MockyMouse::Mock.new mock_params
 
       if @mock.save
-        redirect_to duckrails_mocks_path, flash: { info: 'The mock was created successfully.' }
+        redirect_to mocky_mouse_mocks_path, flash: { info: 'The mock was created successfully.' }
       else
         @skip_reloading = true
         render :new
@@ -59,22 +59,22 @@ module MockyMouse
     def destroy
       @mock.delete
       MockyMouse::Router.unregister_mock @mock
-      redirect_to duckrails_mocks_path, flash: { info: "Mock '#{@mock.name}' was deleted successfully." }
+      redirect_to mocky_mouse_mocks_path, flash: { info: "Mock '#{@mock.name}' was deleted successfully." }
     end
 
     def activate
       @mock.activate!
-      redirect_to duckrails_mocks_path
+      redirect_to mocky_mouse_mocks_path
     end
 
     def deactivate
       @mock.deactivate!
-      redirect_to duckrails_mocks_path
+      redirect_to mocky_mouse_mocks_path
     end
 
     # This is the one and only action mapped to each mock route
     def serve_mock
-      mock = MockyMouse::Mock.find params[:duckrails_mock_id]
+      mock = MockyMouse::Mock.find params[:mocky_mouse_mock_id]
       overrides = (evaluate_content(mock.script_type, mock.script, true) || {}).with_indifferent_access
 
       mock.headers.each do |header|
@@ -135,7 +135,7 @@ module MockyMouse
 
       force_json ? JSON.parse(result.blank? ? '{}' : result) : result
     rescue StandardError => error
-      response.headers['Duckrails-Error'] = error.to_s
+      response.headers['mocky_mouse-Error'] = error.to_s
       logger.error error.message
       logger.error error.backtrace.join "\n"
       nil

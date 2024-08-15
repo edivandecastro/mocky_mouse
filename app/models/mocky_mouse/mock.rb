@@ -36,11 +36,11 @@ class MockyMouse::Mock < ApplicationRecord
   end
 
   def activate!
-    self.update_attributes!(active: true)
+    self.update_attribute(:active, true)
   end
 
   def deactivate!
-    self.update_attributes!(active: false)
+    self.update_attribute(:active, false)
   end
 
   #########
