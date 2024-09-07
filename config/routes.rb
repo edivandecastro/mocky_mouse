@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  # devise_for :users
 
   # Ensure you have overridden routes for generated controllers in your routes.rb.
-  # devise_for :users, controllers: {
-  #   sessions: 'users/sessions'
-  # }
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
   root to: 'mocky_mouse/home#index'
 
