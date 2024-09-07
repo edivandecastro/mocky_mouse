@@ -1,20 +1,38 @@
-<h2>Log in</h2>
+<div class="middle-box text-center loginscreen animated fadeInDown">
+  <div>
+    <div>
+      <h1 class="logo-name">MM</h1>
+    </div>
+    <h3>Bem vindo ao Mocky Mouse</h3>
+    <p>
+      O Mocky Mouse ajuda você a construir APIs rests simuladas sem nenhuma codificação.
+      Esta ferramenta irá ajudá-lo a realizar a depuração, interceptação e proxy de requisições HTTP.
+    </p>
+    <p>Realize o login para vê-la em ação</p>
+    <%= simple_form_for(resource,
+      as: resource_name, url: session_path(resource_name), html: { class: 'm-t' }) do |f| %>
+        <div class="form-group">
+          <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "email", class: "form-control", placeholder: "Username" } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :password,
+                      required: false,
+                      input_html: {
+                        class: "form-control",
+                        placeholder: "Password",
+                        autocomplete: "current-password",
+                      } %>
+        </div>
+        <%= f.button :submit, "Log in", class: "btn btn-primary block full-width m-b" %>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <a href="#"><small>Forgot password?</small></a>
+        <p class="text-muted text-center"><small>Do not have an account?</small></p>
+        <a class="btn btn-sm btn-white btn-block" href="#">Create an account</a>
+    <% end %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+</div>
 
 <%= render "devise/shared/links" %>
