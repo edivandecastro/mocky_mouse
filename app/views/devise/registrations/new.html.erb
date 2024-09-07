@@ -1,25 +1,52 @@
-<h2>Sign up</h2>
+<div class="middle-box text-center loginscreen   animated fadeInDown">
+  <div>
+    <div>
+      <h1 class="logo-name">IN+</h1>
+    </div>
+    <h3>Register to Mocky Mouse</h3>
+    <p>Create account to see it in action.</p>
+    <%= simple_form_for(resource,
+      as: resource_name, url: registration_path(resource_name), html: { class: "m-t" }) do |f| %>
+      <div class="form-group">
+        <%= f.input :name,
+                    required: true,
+                    autofocus: true,
+                    label: false,
+                    input_html: { autocomplete: "name", class: "form-control", placeholder: "Name" } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    label: false,
+                    input_html: { autocomplete: "email", class: "form-control", placeholder: "Email" } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :password,
+                    required: true,
+                    autofocus: true,
+                    label: false,
+                    input_html: { autocomplete: "new-password", class: "form-control", placeholder: "Password" } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :password_confirmation,
+                    required: true,
+                    autofocus: true,
+                    label: false,
+                    input_html: { autocomplete: "new-password", class: "form-control", placeholder: "Password Confirmation" } %>
+      </div>
+      <div class="form-group">
+        <div class="checkbox i-checks">
+          <label>
+            <input type="checkbox">
+              <i></i> Agree the terms and policy
+          </label>
+        </div>
+      </div>
+      <%= f.button :submit, "Sign up", class: "btn btn-primary block full-width m-b" %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+      <p class="text-muted text-center"><small>Already have an account?</small></p>
+      <a class="btn btn-sm btn-white btn-block">Login</a>
+    <% end %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
