@@ -16,6 +16,7 @@ gem 'simple_form', '>= 5.3.1'
 gem 'pg', '>= 1.5.7'
 gem 'libxml-ruby'
 gem 'kaminari'
+gem 'devise', '~> 4.9'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
