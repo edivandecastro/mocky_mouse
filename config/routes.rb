@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   devise_for :users
-# You can have the root of your site routed with "root"
+
+  # Ensure you have overridden routes for generated controllers in your routes.rb.
+  # devise_for :users, controllers: {
+  #   sessions: 'users/sessions'
+  # }
+
   root to: 'mocky_mouse/home#index'
 
   namespace 'mocky_mouse' do
