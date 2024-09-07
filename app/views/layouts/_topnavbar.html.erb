@@ -5,8 +5,9 @@
     </div>
     <ul class="nav navbar-top-links navbar-right">
       <li>
-        <%= link_to pages_login_path, class: "dropdown-item" do %>
-          <i class="fa fa-sign-out"></i> Log out
+        <%= link_to destroy_user_session_path, class: "dropdown-item",
+          method: :delete, data: { confirm: 'Tem certeza que deseja sair?' } do %>
+          <i class="fa fa-sign-out"></i> Logout
         <% end %>
       </li>
     </ul>
