@@ -23,8 +23,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get "pages/login"
-  get "pages/register"
-
   MockyMouse::Router.load_mock_routes!
 end
