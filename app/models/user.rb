@@ -4,5 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :mocks, class_name: 'MockyMouse::Mock', inverse_of: :user
+
   validates :name, presence: true
 end

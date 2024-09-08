@@ -4,6 +4,8 @@ class MockyMouse::Mock < ApplicationRecord
   SCRIPT_TYPE_STATIC = 'static'
 
   has_many :headers, dependent: :destroy, inverse_of: :mock
+  belongs_to :user, inverse_of: :mocks
+
   accepts_nested_attributes_for :headers, allow_destroy: true, reject_if: :all_blank
 
   validates :status, presence: true
