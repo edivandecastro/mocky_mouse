@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_07_031843) do
+ActiveRecord::Schema.define(version: 2024_09_08_131441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,10 @@ ActiveRecord::Schema.define(version: 2024_09_07_031843) do
     t.integer "mock_order", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["mock_order"], name: "index_mocks_on_mock_order", unique: true
     t.index ["name"], name: "index_mocks_on_name", unique: true
+    t.index ["user_id"], name: "index_mocks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,4 +67,5 @@ ActiveRecord::Schema.define(version: 2024_09_07_031843) do
   end
 
   add_foreign_key "headers", "mocks", on_delete: :cascade
+  add_foreign_key "mocks", "users"
 end
