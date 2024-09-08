@@ -47,6 +47,7 @@ module MockyMouse
 
     def create
       @mock = MockyMouse::Mock.new mock_params
+      @mock.user = current_user
 
       if @mock.save
         redirect_to mocky_mouse_mocks_path, flash: { info: 'The mock was created successfully.' }
