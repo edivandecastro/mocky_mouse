@@ -50,7 +50,8 @@ module MockyMouse
         return unless mock.active?
 
         MockyMouse::Application.routes.draw do
-          self.send(:match, mock.route_path, to: 'mocky_mouse/mocks#serve_mock', defaults: { mocky_mouse_mock_id: mock.id }, via: mock.request_method)
+          self.send(:match, "#{mock.user_id}/#{mock.route_path}", to: 'mocky_mouse/mocks#serve_mock',
+            defaults: { mocky_mouse_mock_id: mock.id }, via: mock.request_method)
         end
       end
     end
