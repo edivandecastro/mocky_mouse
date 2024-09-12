@@ -25,7 +25,7 @@ Para criar e rodar o ambiente de desenvolvimento são necessárias as seguintes 
 1. Rodar
 ```console
 docker-compose up --build -d
-docker-compose exec backend bundle install
-docker-compose exec backend bundle exec rails db:create db:migrate db:seed
+docker-compose exec web bundle install
+docker-compose exec web bundle exec rails db:create db:migrate db:seed
 ```
 3. Acesse o ambiente local usando a url http://localhost:3002/
