@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:13
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: app_development
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3001 -b '0.0.0.0'"
+    volumes:
+      - .:/app
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432/app_development
+    environment:
+      RAILS_ENV: development
+      RACK_ENV: development
+      DATABASE_URL: postgres://postgres:password@db:5432/app_development
+
+volumes:
+  db-data:
