@@ -6,6 +6,7 @@ module MockyMouse
     after_action :reload_routes, only: [:update, :create, :destroy, :deactivate, :activate, :update_order]
 
     skip_before_action :verify_authenticity_token, :only => [:serve_mock]
+    skip_before_action :authenticate_user!, :only => [:serve_mock]
 
     def index
       if params[:sort]
