@@ -28,4 +28,4 @@ docker-compose up --build -d
 docker-compose exec backend bundle install
 docker-compose exec backend bundle exec rails db:create db:migrate db:seed
 ```
-3. Acesse o ambiente local usando a url http://localhost:3001/
+3. Acesse o ambiente local usando a url http://localhost:3002/
