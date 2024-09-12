@@ -7,7 +7,7 @@ gem 'rails', '~> 6.1.7'
 gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-rails'
 gem 'sqlite3', '~> 1.4'
-gem 'puma', '~> 4.1'
+gem 'puma', '>= 6.4.2'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
@@ -17,6 +17,7 @@ gem 'pg', '>= 1.5.7'
 gem 'libxml-ruby'
 gem 'kaminari'
 gem 'devise', '~> 4.9'
+gem 'bigdecimal', '~> 3.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
