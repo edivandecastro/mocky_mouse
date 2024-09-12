@@ -1,24 +1,31 @@
-# README
+# Mocky Mouse
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+O Mocky Mouse ajuda você a construir APIs rests simuladas sem nenhuma codificação. Esta ferramenta irá ajudá-lo a realizar a depuração, interceptação e proxy de requisições HTTP.
 
-Things you may want to cover:
+## Tech Stack
 
-* Ruby version
+| Tecnologia    | Versão  |
+| ------------- | ------- |
+| Ruby          | 3.3.1   |
+| Rails         | 6.1     |
+| PostgreSQL    | 14.7    |
 
-* System dependencies
+## Ambiente de desenvolvimento
 
-* Configuration
+### Dependências
 
-* Database creation
+Para criar e rodar o ambiente de desenvolvimento são necessárias as seguintes ferramentas:
 
-* Database initialization
+- [Git](https://git-scm.com/doc)
+- [Docker](https://docs.docker.com/engine/install/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-* How to run the test suite
+## Como executar o projeto
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Rodar
+```console
+docker-compose up --build -d
+docker-compose exec backend bundle install
+docker-compose exec backend bundle exec rails db:create db:migrate db:seed
+```
+3. Acesse o ambiente local usando a url http://localhost:3001/
