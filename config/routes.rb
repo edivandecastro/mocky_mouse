@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # devise_for :users
 
   # Ensure you have overridden routes for generated controllers in your routes.rb.
@@ -11,6 +10,7 @@ Rails.application.routes.draw do
   root to: 'mocky_mouse/home#index'
 
   namespace 'mocky_mouse' do
+    resources :projects
     resources :mocks, except: [:show] do
       member do
         put :activate
