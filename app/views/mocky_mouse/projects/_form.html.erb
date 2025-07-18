@@ -1,0 +1,38 @@
+<%= simple_form_for @project do |form| %>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-10">
+        <div class="form-group">
+          <%= form.input :name, hint: "Enter a name for this project", input_html: { class: "form-control" } %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10">
+        <div class="form-group">
+          <%= form.input :endpoint, hint: "Enter an endpoint for this project", input_html: { class: "form-control" } %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10">
+        <div class="form-group">
+          <%= form.input :description, hint: "Enter a description", input_html: { class: "form-control" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-w-m btn-primary m-t-sm">Save</button>
+<% end %>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(function() {
+      $('.check-box-active').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green',
+      });
+    });
+  </script>
+<% end %>
